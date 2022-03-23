@@ -16,6 +16,9 @@ public class LegoSetRepository extends Repository<LegoSet> {
     }
 
     //Method 1
+    /**
+    * returns the average number of Lego Pieces
+    * @return double*/
     public double AvgNumberOfPieces(){
         return getAll().stream()
                 .mapToLong(LegoSet::getPieces)
@@ -24,6 +27,9 @@ public class LegoSetRepository extends Repository<LegoSet> {
     }
 
     //Method 2
+    /**
+    * prints the Names of Lego Sets that have Single Names */
+
     public void SingleName(){
         getAll().stream().
                 map(LegoSet::getName).
@@ -35,16 +41,28 @@ public class LegoSetRepository extends Repository<LegoSet> {
     }
 
     //Method 3
+    /**
+    * Returns fist Lego set with name starting with the letter K
+     * @return String
+     */
     public Optional<LegoSet> NameWithK(){
         return getAll().stream().
                 filter(LegoSet -> LegoSet.getName().startsWith("K")).
                 findFirst();
     }
     //Method 4
+    /**
+    * Returns true if there exists a lego set with zero number of pieces; otherwise returns false
+     * @return boolean
+     */
     public boolean ZeroPieces(){
         return getAll().stream().anyMatch(LegoSet -> LegoSet.getPieces() == 0);
     }
 
+    //Method 5
+    /**
+    * Prints Distinct Themes in reverse alphabetical order
+    */
     public void DistinctThemeInReverseAlphabeticalOrder(){
         getAll().stream().
                 map(LegoSet::getTheme).
